@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+       if(str1.size()>str2.size()) swap(str1,str2);
+        int i,j,x=str1.size(),y=str2.size();
+        for(i=x;i>=1;i--)
+        {
+            if(x%i || y%i) continue;
+            string cs=str1.substr(0,i);
+            for(j=0;j<x;j+=i)
+            {
+                if(str1.substr(j,i)!=cs) break;
+            }
+            if(j<x) continue;
+            for(j=0;j<y;j+=i)
+            {
+                if(str2.substr(j,i)!=cs) break;
+            }
+            if(j==y) return cs;
+        }
+        return "";
+    }
+};
